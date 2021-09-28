@@ -1,0 +1,39 @@
+.repo {
+  border: solid 2px rgb(250, 180, 180);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(235, 245, 253);
+  margin: 20px 0px;
+  font-size: 22px;
+  border-radius: 12px;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    &:hover {
+      text-decoration: underline;
+    }
+    &-name {
+      font-size: 1.2em;
+      font-weight: 700;
+      margin: 0 auto;
+    }
+    &-stars {
+      border: 1px solid rgb(122, 182, 67);
+      font-size: 20px;
+      font-weight: bold;
+      padding: 10px;
+    }
+  }
+  &-last-commit {
+    margin: 0 auto;
+  }
+  &-link {
+    margin: 0 auto;
+    &:hover {
+      color: #ffa000;
+    }
+  }
+}
