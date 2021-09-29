@@ -9,7 +9,7 @@ const initialState = {
   currentPage: 1,
   perPage: 10,
   totalCount: 0,
-  isFetchingError: false
+  isFetchingError: false,
 };
 
 export default function reposReducer(state = initialState, action) {
@@ -31,11 +31,11 @@ export default function reposReducer(state = initialState, action) {
         ...state,
         currentPage: action.payload,
       };
-      case SET_IS_FETCHING_ERROR:
-        return {
-          ...state,
-          isFetchingError: action.payload,
-        };
+    case SET_IS_FETCHING_ERROR:
+      return {
+        ...state,
+        isFetchingError: action.payload,
+      };
     default:
       return state;
   }
@@ -62,9 +62,9 @@ export const setCurrentPageActionCreator = (page) => {
   };
 };
 
-export const setIsFetchingErrorCreator = (error) => {
+export const setIsFetchingErrorCreator = (bool) => {
   return {
     type: SET_IS_FETCHING_ERROR,
-    payload: error,
+    payload: bool,
   };
 };

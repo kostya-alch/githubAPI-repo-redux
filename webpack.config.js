@@ -1,54 +1,56 @@
-import { resolve as _resolve } from 'path';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import HTMLWebpackPlugin from 'html-webpack-plugin';
+const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
-export const mode = 'development';
-export const entry = ['@babel/polyfill', './src/index.jsx'];
-export const output = {
-  path: _resolve(__dirname, 'dist'),
-  filename: '[name].[hash].js',
-};
-export const devServer = {
-  port: 3000,
-  historyApiFallback: true,
-  publicPath: '/',
-};
-export const resolve = {
-  extensions: ['.js', '.jsx'],
-};
-export const plugins = [
-  new HTMLWebpackPlugin({ template: './src/index.html' }),
-  new CleanWebpackPlugin(),
-];
-export const module = {
-  rules: [
-    {
-      test: /\.(css|less)$/,
-      use: ['style-loader', 'css-loader', 'less-loader'],
-    },
-    {
-      test: /\.(jpg|jpeg|png|svg)/,
-      use: ['file-loader'],
-    },
-    {
-      test: /\.m?js$/,
-      exclude: /node_modules/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env'],
-        },
-      },
-    },
-    {
-      test: /\.m?jsx$/,
-      exclude: /node_modules/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
-        },
-      },
-    },
+module.exports = {
+  mode: 'development',
+  entry: ['@babel/polyfill', './src/index.jsx'],
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[hash].js',
+    publicPath: '/',
+  },
+  devServer: {
+    port: 3000,
+    historyApiFallback: true,
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+  plugins: [
+    new HTMLWebpackPlugin({ template: './src/index.html' }),
+    new CleanWebpackPlugin(),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.(css|less)$/,
+        use: ['style-loader', 'css-loader', 'less-loader'],
+      },
+      {
+        test: /\.(jpg|jpeg|png|svg)/,
+        use: ['file-loader'],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react', '@babel/preset-env'],
+          },
+        },
+      },
+    ],
+  },
 };

@@ -5,7 +5,7 @@ import {
   setReposActionCreator,
 } from '../reducers/repos-reducer';
 
-export const getRepos = (searchQuery, currentPage, perPage) => {
+export const getRepos = (searchQuery = 'stars:%3E1', currentPage, perPage) => {
   if (searchQuery === '') {
     searchQuery = 'stars:%3E1';
   }
@@ -13,8 +13,7 @@ export const getRepos = (searchQuery, currentPage, perPage) => {
     try {
       dispatch(setIsFetchingActionCreator(true));
       const response = await axios.get(
-        `https://api.github.com/ssearch/repositories?q=${searchQuery}
-       &sort=stars&per_page=${perPage}&page=${currentPage}`
+        `https://api.github.com/search/repositories?q=${searchQuery}&sort=stars&per_page=${perPage}&page=${currentPage}`
       );
       dispatch(setReposActionCreator(response.data));
     } catch (e) {

@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-const Error = () => {
+const Error = (props) => {
    return (
-      <div style={{ textAlign: center }}>
+      <div style={{ textAlign: "center" }}>
          <button onClick={() => props.history.push('/')}>GO TO MAIN PAGE</button>
-         Error
+         ERROR
       </div>
-   )
-}
+   );
+};
 
-export default Error
+export default Error;

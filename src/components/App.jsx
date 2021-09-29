@@ -13,13 +13,13 @@ const App = (props) => {
 
    return (
       <div>
-         <BrowserRouter>
+         <BrowserRouter ter>
             <div className="container">
                <Switch>
                   <Route exact path='/' component={Main} />
                   <Route path="/card/:username/:reponame" component={Card} />
                   <Route path="/error" component={Error} />
-                  <Redirect to={'/'} />
+                  <Redirect to='/' />
                </Switch>
             </div>
          </BrowserRouter>
